@@ -27,6 +27,8 @@
 		FD704F2330672DA500A405F5 /* WeatherLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD704F4030672DA500A405F5 /* WeatherLiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherLiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD704F5030672DA500A405F5 /* WeatherLiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherLiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDBEE5ED308AF2A3005A9442 /* build.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = build.yml; sourceTree = "<group>"; };
+		FDBEE5EE308AF2CC005A9442 /* test.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = test.yml; sourceTree = "<group>"; };
 		FDF6E64530890058004F386D /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		FDF6E64630890058004F386D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 		FD704F1A30672DA400A405F5 = {
 			isa = PBXGroup;
 			children = (
+				FDBEE5EA308AF257005A9442 /* .github */,
 				FDF6E64530890058004F386D /* Secrets.xcconfig */,
 				FDF6E64630890058004F386D /* Info.plist */,
 				FD704F2530672DA500A405F5 /* WeatherLite */,
@@ -94,6 +97,23 @@
 				FD704F5030672DA500A405F5 /* WeatherLiteUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FDBEE5EA308AF257005A9442 /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				FDBEE5EB308AF265005A9442 /* workflows */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
+		FDBEE5EB308AF265005A9442 /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				FDBEE5EE308AF2CC005A9442 /* test.yml */,
+				FDBEE5ED308AF2A3005A9442 /* build.yml */,
+			);
+			path = workflows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

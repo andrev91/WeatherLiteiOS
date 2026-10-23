@@ -1,0 +1,37 @@
+name: Xcode - Build and Analyze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and Analyze WeatherLite
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Secrets.xcconfig
+        env:
+          OPEN_WEATHER_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
+        run: |
+          cat <<EOF > Secrets.xcconfig
+          OPEN_WEATHER_API_KEY = ${OPEN_WEATHER_KEY:-ci_placeholder_key}
+          ACCUWEATHER_API_KEY =
+          INFOPLIST_KEY_OPEN_WEATHER_API_KEY = \$(OPEN_WEATHER_API_KEY)
+          INFOPLIST_KEY_ACCUWEATHER_API_KEY = \$(ACCUWEATHER_API_KEY)
+          INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = WeatherLite needs your location to find the nearest city and its weather. No personal information is stored.
+          EOF
+
+      - name: Build and Analyze
+        run: |
+          set -o pipefail
+          xcodebuild clean build analyze \
+            -project WeatherLite.xcodeproj \
+            -scheme WeatherLite \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify

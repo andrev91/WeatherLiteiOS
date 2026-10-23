@@ -1,0 +1,58 @@
+name: iOS Unit Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Build and Run Unit Tests
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Secrets.xcconfig
+        env:
+          OPEN_WEATHER_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
+        run: |
+          cat <<EOF > Secrets.xcconfig
+          OPEN_WEATHER_API_KEY = ${OPEN_WEATHER_KEY:-ci_placeholder_key}
+          ACCUWEATHER_API_KEY =
+          INFOPLIST_KEY_OPEN_WEATHER_API_KEY = \$(OPEN_WEATHER_API_KEY)
+          INFOPLIST_KEY_ACCUWEATHER_API_KEY = \$(ACCUWEATHER_API_KEY)
+          INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = WeatherLite needs your location to find the nearest city and its weather. No personal information is stored.
+          EOF
+
+      - name: Select iOS Simulator
+        run: |
+          SIMULATOR_ID=$(xcrun simctl list devices available -j | jq -r '.devices | to_entries[] | select(.key | contains("iOS")) | .value[] | select(.name | startswith("iPhone")) | .udid' | head -n 1)
+          if [ -z "$SIMULATOR_ID" ]; then
+            echo "No available iPhone simulator found"
+            exit 1
+          fi
+          echo "Selected Simulator UDID: $SIMULATOR_ID"
+          echo "SIMULATOR_ID=$SIMULATOR_ID" >> "$GITHUB_ENV"
+
+      - name: Build for Testing
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing \
+            -project WeatherLite.xcodeproj \
+            -scheme WeatherLite \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -only-testing:WeatherLiteTests \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
+
+      - name: Run Unit Tests
+        run: |
+          set -o pipefail
+          xcodebuild test-without-building \
+            -project WeatherLite.xcodeproj \
+            -scheme WeatherLite \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -only-testing:WeatherLiteTests \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
