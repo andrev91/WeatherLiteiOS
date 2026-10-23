@@ -27,11 +27,15 @@ jobs:
           INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = WeatherLite needs your location to find the nearest city and its weather. No personal information is stored.
           EOF
 
-      - name: Select iOS Simulator
+      - name: Select Compatible iOS Simulator
         run: |
-          SIMULATOR_ID=$(xcrun simctl list devices available -j | jq -r '.devices | to_entries[] | select(.key | contains("iOS")) | .value[] | select(.name | startswith("iPhone")) | .udid' | head -n 1)
+          SIMULATOR_ID=$(xcodebuild -project WeatherLite.xcodeproj -scheme WeatherLite -showdestinations \
+            | grep "platform:iOS Simulator" \
+            | grep "name:iPhone" \
+            | head -n 1 \
+            | sed -E 's/.*id:([^, }]+).*/\1/')
           if [ -z "$SIMULATOR_ID" ]; then
-            echo "No available iPhone simulator found"
+            echo "No compatible iPhone simulator destination found for WeatherLite scheme"
             exit 1
           fi
           echo "Selected Simulator UDID: $SIMULATOR_ID"
