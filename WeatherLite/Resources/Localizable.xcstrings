@@ -1,0 +1,147 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Access your location" : {
+      "comment" : "A title for a dialog that explains why the app needs location access."
+    },
+    "Allow" : {
+      "comment" : "A button that triggers the system location permission prompt."
+    },
+    "API Error: %lld - %@" : {
+      "comment" : "Error message when an HTTP request returns a non-2xx status code."
+    },
+    "API Key is not set in Info.plist or Secrets.xcconfig. Please add %@." : {
+      "comment" : "Error message when the API key is missing from configuration."
+    },
+    "Bookmark" : {
+      "comment" : "Button label to bookmark the currently selected location."
+    },
+    "Bookmark a city on the weather screen to quickly jump to it here." : {
+      "comment" : "Description shown when no bookmarks have been saved yet."
+    },
+    "Bookmark removed." : {
+      "comment" : "Snackbar confirmation when a bookmark is deleted."
+    },
+    "Bookmark successfully added!" : {
+      "comment" : "Snackbar confirmation when a bookmark is added."
+    },
+    "Bookmarked Locations" : {
+      "comment" : "Navigation title for the bookmarks sheet."
+    },
+    "Bookmarks" : {
+      "comment" : "Accessibility label for the bookmarks toolbar button."
+    },
+    "Cannot save duplicate Bookmark!" : {
+      "comment" : "Snackbar error when attempting to save an existing bookmark."
+    },
+    "Clear selection" : {
+      "comment" : "Accessibility label for clearing a dropdown selection."
+    },
+    "Delete" : {
+      "comment" : "Swipe action button to delete a bookmark."
+    },
+    "Delete bookmark" : {
+      "comment" : "Accessibility label for deleting a bookmark."
+    },
+    "Done" : {
+      "comment" : "Toolbar button to dismiss a sheet."
+    },
+    "Failed to parse weather data." : {
+      "comment" : "Error message when JSON decoding fails."
+    },
+    "Fetch Weather" : {
+      "comment" : "Button label to fetch weather for the selected location."
+    },
+    "Invalid lat/lon provided" : {
+      "comment" : "Error message when coordinates are NaN."
+    },
+    "Invalid URL: %@" : {
+      "comment" : "Error message when a URL cannot be constructed."
+    },
+    "Loading…" : {
+      "comment" : "Caption displayed beneath the animated loading orb."
+    },
+    "Location access is disabled in device settings. Please enable location permission in app settings to use your current location." : {
+      "comment" : "Alert message shown when location permission has been denied."
+    },
+    "Location permission is required to determine your current location." : {
+      "comment" : "Inline error message shown when location permission is denied."
+    },
+    "Location Permission Required" : {
+      "comment" : "Alert title shown when location permission has been denied."
+    },
+    "Network connection is unavailable." : {
+      "comment" : "Error message when network connectivity is unavailable."
+    },
+    "No Bookmarks Yet" : {
+      "comment" : "Empty state title when no bookmarks exist."
+    },
+    "No description" : {
+      "comment" : "Fallback text when weather description is missing."
+    },
+    "Not now" : {
+      "comment" : "Cancel button on location permission alerts."
+    },
+    "Observed at: %@" : {
+      "comment" : "Label showing the local time of the weather observation."
+    },
+    "Open Settings" : {
+      "comment" : "Button to open iOS app settings."
+    },
+    "OpenWeather Data" : {
+      "comment" : "Headline title on the main weather screen."
+    },
+    "Please select a state and city." : {
+      "comment" : "Validation error when fetching weather without selecting both state and city."
+    },
+    "Received empty success response." : {
+      "comment" : "Error message when the server returns an empty response body."
+    },
+    "Refresh" : {
+      "comment" : "Button label to refresh weather data."
+    },
+    "Search %@" : {
+      "comment" : "Search field prompt in the dropdown sheet."
+    },
+    "Select %@" : {
+      "comment" : "Placeholder and navigation title for selecting an item from the dropdown."
+    },
+    "Settings" : {
+      "comment" : "Navigation title and accessibility label for settings."
+    },
+    "Temperature Unit" : {
+      "comment" : "Section header and picker label for selecting temperature unit."
+    },
+    "Temperature: %@" : {
+      "comment" : "Label displaying the formatted temperature."
+    },
+    "Theme" : {
+      "comment" : "Section header and picker label for selecting app theme."
+    },
+    "Unable to find a location for your current area." : {
+      "comment" : "Error message when current GPS location cannot be resolved to a US city."
+    },
+    "Unknown error" : {
+      "comment" : "Fallback error message."
+    },
+    "Use Current Location" : {
+      "comment" : "Button label to resolve weather for the user's current GPS location."
+    },
+    "Weather App" : {
+      "comment" : "Main navigation bar title."
+    },
+    "Weather fetch canceled." : {
+      "comment" : "Error message when a weather request is cancelled."
+    },
+    "Weather Icon" : {
+      "comment" : "Accessibility label for the weather condition symbol."
+    },
+    "Weather/Location Data" : {
+      "comment" : "Placeholder text shown before weather data is loaded."
+    },
+    "WeatherLite needs your location to find the nearest city and its weather. No personal information is stored." : {
+      "comment" : "Explanation message for location access."
+    }
+  },
+  "version" : "1.1"
+}
